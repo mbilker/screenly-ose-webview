@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     MainWindow *window = new MainWindow();
     window->show();
 
-    QDBusConnection connection = QDBusConnection::sessionBus();
+    QDBusConnection connection = QDBusConnection::systemBus();
 
     if (!connection.registerObject("/Screenly", window,  QDBusConnection::ExportAllSlots))
     {
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     qDebug() << "WebView connected to D-bus";
 
     if (!connection.registerService("screenly.webview")) {
-        qWarning() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        qWarning() << qPrintable(connection.lastError().message());
         return 1;
     }
     qDebug() << "Screenly service start";
