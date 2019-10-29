@@ -1,9 +1,10 @@
 TEMPLATE = app
 
-QT += webkit webkitwidgets dbus
+QT += core dbus webkit webkitwidgets
 CONFIG += c++11
 
-SOURCES += src/main.cpp \
+SOURCES += src/cookiejar.cpp \
+    src/main.cpp \
     src/mainwindow.cpp \
     src/view.cpp
 
